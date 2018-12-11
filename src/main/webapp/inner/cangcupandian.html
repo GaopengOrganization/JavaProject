@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/easyui.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon.css">
+		<link rel="stylesheet" type="text/css" href="../css/demo.css">
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('#people').textbox('textbox').bind('keyup', function() {
+					this.value = this.value.replace(/[^\u4e00-\u9fa5]/g, '');
+				})
+			})
+			$(function() {
+				setInterval(function working() {
+					var datetimes = $("#datetimes").val();
+					$("#infoDatetimes").text(datetimes);
+					var rawSand = $("#rawSand").val();
+					$("#infoRawSand").text(rawSand + '(t)');
+					var sandHead = $("#sandHead").val();
+					$("#infoSandHead").text(sandHead + '(t)');
+					var waste = $("#waste").val();
+					$("#infoWaste").text(waste + '(t)');
+					var cement = $("#cement").val();
+					$("#infoCement").text(cement + '(t)');
+					var coal = $("#coal").val();
+					$("#infoCoal").text(coal + '(t)');
+					var additiveA = $("#additiveA").val();
+					$("#infoAdditiveA").text(additiveA + '(t)');
+					var additiveB = $("#additiveB").val();
+					$("#infoAdditiveB").text(additiveB + '(t)');
+					var yieldSand = $("#yieldSand").val();
+					$("#infoYieldSand").text(yieldSand + '(t)');
+					var people = $("#people").val();
+					$("#infoPeople").text(people);
+				}, 200);
+			})
+			$(document).ready(function() {
+				$("#people").textbox('setValue', '何双民');
+			})
+			$(function() {
+				$("#sub").click(function() {
+					$("#ff").form("submit", {
+						url: "http://127.0.0.1:8080/BLPM/storageServlet",
+						success: function(data) {
+							if (data == 2) {
+								$.messager.alert('消息框', '提交 失败', 'info');
+								$("#ff").form('clear');
+							} else if (data == 1) {
+								$.messager.alert('消息框', '提交成功', 'info');
+								$("#rawSand").textbox('setValue', '');
+								$("#sandHead").textbox('setValue', '');
+								$("#waste").textbox('setValue', '');
+								$("#cement").textbox('setValue', '');
+								$("#coal").textbox('setValue', '');
+								$("#additiveA").textbox('setValue', '');
+								$("#additiveB").textbox('setValue', '');
+								$("#yieldSand").textbox('setValue', '');
+								$("#datetimes").textbox('setValue', '');
+							}
+						}
+					});
+				});
+			})
+		</script>
+		<style type="text/css">
+			#tab {
+				color: blue;
+				font-size: 17px;
+				text-align: center;
+				border: solid 1px;
+				border-color: blue;
+				border-collapse: collapse;
+				margin: auto;
+				width: 95%;
+			}
+
+			#tab tr {
+				height: 44px;
+			}
+
+			#tab td {
+				border: solid 1px;
+				border-color: blue;
+			}
+
+			.result {
+				font-size: 23px;
+				color: black;
+			}
+
+			.title_1 {
+				width: 100%;
+				height: 40px;
+				background-color: #E0ECFF;
+				background: -webkit-linear-gradient(top, #EFF5FF 0, #E0ECFF 100%);
+				background: -moz-linear-gradient(top, #EFF5FF 0, #E0ECFF 100%);
+				background: -o-linear-gradient(top, #EFF5FF 0, #E0ECFF 100%);
+				background: linear-gradient(to bottom, #EFF5FF 0, #E0ECFF 100%);
+				background-repeat: repeat-x;
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFF5FF, endColorstr=#E0ECFF, GradientType=0);
+			}
+		</style>
+
+	</head>
+	<body>
+		<form id="ff" method="post">
+			<table border="1" bordercolor="#95b8e7" width="100%" style="border-collapse:collapse; ">
+				<tr>
+					<div class="title_1">
+						<font size="5">仓储部——</font>
+						<font size="3" color="red">原材盘点记录</font>
+					</div>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">盘 点 时 间 ： </font>
+					</td>
+					<td>
+						<input class="easyui-datetimebox" id="datetimes" name="datetimes" data-options="closeText:false,currentText:false,showSeconds:false,validType:'true',required:true,missingMessage:false"
+						 style="width:20%">
+						<font size="4">XX月XX日XXXX年*XX时XX分</font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right" style="width:20%;">
+						<font size="4">原料沙子 ：</font>
+					</td>
+					<td style="width:80%;">
+						<input id="rawSand" class="easyui-numberbox" name="rawSand" style="width:20%;" data-options="max:1000,precision:3,required:true,missingMessage:false">
+						<font size="4">单位：吨 (t)</font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">沙&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;头 ：</font>
+					</td>
+					<td>
+						<input id="sandHead" class="easyui-numberbox" name="sandHead" style="width:20%;" data-options="max:1000,precision:3,required:true,missingMessage:false">
+						<font size="4">单位：吨 (t)</font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">废&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;料 ：</font>
+					</td>
+					<td>
+						<input id="waste" class="easyui-numberbox" name="waste" style="width:20%;" data-options="max:1000,precision:3,required:true,missingMessage:false">
+						<font size="4">单位：吨 (t)</font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">成品沙子 ：</font>
+					</td>
+					<td>
+						<input id="yieldSand" class="easyui-numberbox" name="yieldSand" data-options="max:1000,precision:3,required:true,missingMessage:false"
+						 style="width:20%;">
+						<font size="4">单位：吨 (t)</font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">水&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;泥 ：</font>
+					</td>
+					<td>
+						<input id="cement" class="easyui-numberbox" name="cement" data-options="max:1000,precision:3,required:true,missingMessage:false"
+						 style="width:20%;">
+						<font size="4">单位：吨 (t)</font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">粉&nbsp;&nbsp;煤&nbsp;&nbsp;灰 ：</font>
+					</td>
+					<td>
+						<input id="coal" class="easyui-numberbox" name="coal" data-options="max:1000,precision:3,required:true,missingMessage:false"
+						 style="width:20%;">
+						<font size="4">单位：吨 (t)</font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">添加剂A ：</font>
+					</td>
+					<td>
+						<input id="additiveA" class="easyui-numberbox" name="additiveA" data-options="max:1000,precision:3,required:true,missingMessage:false"
+						 style="width:20%;">
+						<font size="4">单位：吨 (t)</font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">添加剂B ：</font>
+					</td>
+					<td>
+						<input id="additiveB" class="easyui-numberbox" name="additiveB" data-options="max:1000,precision:3,required:true,missingMessage:false"
+						 style="width:20%;">
+						<font size="4">单位：吨 (t)</font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">操&nbsp;&nbsp;作&nbsp;&nbsp;员 ：</font>
+					</td>
+					<td>
+						<input id="people" class="easyui-textbox" name="people" style="width:20%;" data-options="required:true,missingMessage:false">
+						<a href="#" class="easyui-linkbutton" id="sub" data-options="iconCls:'icon-ok'" style="position: relative;right: -10px;">
+							<span style="font-size:14px;">提交</span>
+						</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<div style="background-color: #FF8C69; border: solid 2px;border-color: blue; border-style: dashed; position: relative; top: 10px;height: 255px;">
+			<div style="text-align:center;">
+				<font size="5" color="blue">陕 西 博 立 建 材 有 限 公 司</font>
+			</div><br />
+			<font size="3" color="blue"><span id="infoTime" style="position: relative;left: 10%;" class="result"></span></font>
+			<table id="tab">
+				<tr>
+					<td class="result">
+						<font size="3" color="blue">时间</font>
+					</td>
+					<td class="result">
+						<font size="3" color="blue">原料沙子</font>
+					</td>
+					<td class="result">
+						<font size="3" color="blue">沙 头</font>
+					</td>
+					<td class="result">
+						<font size="3" color="blue">废 料</font>
+					</td>
+					<td class="result">
+						<font size="3" color="blue">成品沙子</font>
+					</td>
+					<td class="result">
+						<font size="3" color="blue">水 泥</font>
+					</td>
+					<td class="result">
+						<font size="3" color="blue">粉 煤 灰</font>
+					</td>
+					<td class="result">
+						<font size="3" color="blue">添加剂A</font>
+					</td>
+					<td class="result">
+						<font size="3" color="blue">添加剂B</font>
+					</td>
+				</tr>
+				<tr>
+					<td class="result">
+						<font size="3" color="blue" id="infoDatetimes"></font>
+					</td>
+					<td class="result">
+						<font size="3" color="blue" id="infoRawSand"></font>
+					</td>
+					<td class="result">
+						<font size="3" color="blue" id="infoSandHead"></font>
+					</td>
+					<td class="result">
+						<font size="3" color="blue" id="infoWaste"></font>
+					</td>
+					<td class="result">
+						<font size="3" color="blue" id="infoYieldSand"></font>
+					</td>
+					<td class="result">
+						<font size="3" color="blue" id="infoCement"></font>
+					</td>
+					<td class="result">
+						<font size="3" color="blue" id="infoCoal"></font>
+					</td>
+					<td class="result">
+						<font size="3" color="blue" id="infoAdditiveA"></font>
+					</td>
+					<td class="result">
+						<font size="3" color="blue" id="infoAdditiveB"></font>
+					</td>
+				</tr>
+				<span style="position: relative;top: 140px;left: 35px;">
+					<font size="3" color="blue">操作员：</font>
+					<span id="infoPeople" class="result">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				</span>
+			</table>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="../../themes/icon.css">
+		<link rel="stylesheet" type="text/css" href="../demo.css">
+		<script type="text/javascript" src="../../jquery.min.js"></script>
+		<script type="text/javascript" src="../../jquery.easyui.min.js"></script>
+	</head>
+	<body>
+		<form>
+			<table border="1" bordercolor="#95b8e7" width="100%" style="border-collapse:collapse; ">
+				<tr>
+					<div class="haha">
+						<font size="5">财务部——</font>
+						<font size="3" color="red">原材料入厂记录</font>
+					</div>
+				</tr>
+				<tr>
+					<td align="right" style="width:20%;">
+						<font size="4">原 材 料 供 应 商 ：</font>
+					</td>
+					<td>
+						<select class="easyui-combobox" name="supplier" style="width:20%;">
+							<option value="gaopeng">高鹏</option>
+							<option value="weimengyi">巍梦艺</option>
+							<option value="wangxuli">王旭立</option>
+							<option value="zhuendong">朱恩东</option>
+							<option value="liyadi">李亚迪</option>
+							<option value="wangbo">王博</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">原 材 料 种 类 ：</font>
+					</td>
+					<td>
+						<div style="float: left;width: 160px;"><img src="../../icon/shazi.png" style="width: 30px;height: 30px;">
+							<font size="4">沙 子 : </font><input class="easyui-radiobutton" name="materials" value="sand">
+						</div>
+						<div style="float: left;width: 160px;"><img src="../../icon/shuini.png" style="width: 30px;height: 30px;">
+							<font size="4">水 泥 : </font><input class="easyui-radiobutton" name="materials" value="cement">
+						</div>
+						<div style="float: left;width: 160px;"><img src="../../icon/meihui.jpg" style="width: 30px;height: 30px;">
+							<font size="4">粉 煤 灰 : </font><input class="easyui-radiobutton" name="materials" value="sand">
+						</div>
+						<div style="float: left;width: 165px;"><img src="../../icon/tianjiajiA.jpg" style="width: 30px;height: 30px;">
+							<font size="4">添 加 剂 A : </font><input class="easyui-radiobutton" name="materials" value="additiveA">
+						</div>
+						<div style="float: left;width: 165px;"><img src="../../icon/tianjiajiB.jpg" style="width: 30px;height: 30px;">
+							<font size="4">添 加 剂 B : </font><input class="easyui-radiobutton" name="materials" value="additiveB">
+						</div>
+
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">车 牌 号 ：</font>
+					</td>
+					<td>
+						<div style="float:left;width: 215px;">
+							<select class="easyui-combobox" name="carNumber" style="width:210px;">
+								<option>陕A</option>
+								<option>陕B</option>
+								<option>陕C</option>
+								<option>陕D</option>
+								<option>陕J</option>
+								<option>陕F</option>
+							</select>
+						</div>
+						<div style="float:left;width: 165px;"><img src="../../icon/carnumber.jpg" style="width: 120px;height: 28px;"></<div>
+					</td>
+				</tr>
+				<tr>
+					<td align="right" style="width:20%;">
+						<font size="4">车 毛 重 ：</font>
+					</td>
+					<td style="width:80%;">
+						<input class="easyui-textbox" name="gross" style="width:20%;">
+						<font size="4">单位：吨 (t)</font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">车 皮 重 ：</font>
+					</td>
+					<td>
+						<input class="easyui-textbox" name="tare" style="width:20%;">
+						<font size="4">单位：吨 (t)</font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">车 净 重 ：</font>
+					</td>
+					<td>
+						<input class="easyui-textbox" name="suttle" style="width:20%;">
+						<font size="4">单位：吨 (t)</font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">入 库 时 间  ： </font>
+					</td>
+					<td>
+						<input class="easyui-datetimebox" name="inTime" data-options="showSeconds:false" style="width:150px">
+						<font size="4">XX月XX日XXXX年*XX时XX分</font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">票 据 编 号 ：</font>
+					</td>
+					<td>
+						<input class="easyui-textbox" name="suttle" style="width:20%;">
+						<font size="4">XX-XX-XX</font>
+					</td>
+				</tr>
+			</table>			
+			<div style="background-color: #E8FFAA; border: solid 2px;border-color: blue; border-style: dashed; position: relative; top: 10px;height: 340px;">
+				<div style="text-align:center;"><font size="5" color="blue">陕 西 博 立 建 材 有 限 公 司</font></div><br/>
+				<font size="3" color="blue"><span style="position: relative;left: 10%;">2018-11-23   13:04</span></font>
+				<font size="3" color="blue"><span style="position: relative;left: 60%;">编号:18-11-82</span></font>
+				<table style="border: solid 1px;border-color: blue;position: relative;top:12px;left: 14px; height: 70%;width: 97%;">
+					<tr>
+						<td>
+							第一行
+						</td>
+						<td>
+							第一行
+						</td>
+						<td>
+							第一行
+						</td>
+					</tr>
+					<tr>
+						<td>
+							第二行
+						</td>
+					</tr>
+					<tr>
+						<td>
+							第三行
+						</td>
+					</tr>
+					<tr>
+						<td>
+							第四行
+						</td>
+					</tr>
+					<tr>
+						<td>
+							第五行
+						</td>
+					</tr>
+				</table>
+				<font size="3"color="blue"><span style="position: absolute;right: 30px;top: 315px;" >司机：姓名</span></font>
+			</div>
+
+		</form>
+	</body>
+</html>

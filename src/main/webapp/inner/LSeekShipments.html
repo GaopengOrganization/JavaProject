@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+    <link rel="stylesheet" type="text/css" href="../css/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../css/icon.css">
+	<link rel="stylesheet" type="text/css" href="../css/demo.css">
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+</head>
+<body>
+	<table class="easyui-datagrid" title="陕西博力有限公司" style="width:100%;height:250px;align-self: center;"
+			data-options="rownumbers:true,singleSelect:true,url:'http://localhost:8080/BLPM/ship',method:'get',toolbar:'#tb',footer:'#ft'">
+		<thead>
+			<tr align="center"> 
+				<th data-options="field:'id',width:20"align="center">ID</th>
+				<th data-options="field:'departID',width:115"align="center">出厂编号</th>
+				<th data-options="field:'departName',width:115,align:'right'"align="center">产品名称</th>
+				<th data-options="field:'carId',width:115,align:'right'"align="center">车牌号</th>
+				<th data-options="field:'workSite',width:70,align:'right'"align="center">工程名称</th>
+				<th data-options="field:'cons_org',width:50"align="center">施工单位</th>
+				<th data-options="field:'departTime',width:200,align:'center'"align="center"align="center">出厂日期</th>
+				<th data-options="field:'record_name',width:80,align:'center'"align="center">记录员名称</th>
+				<th data-options="field:'receipient_name',width:120,align:'center'"align="center">接收人</th>
+				<th data-options="field:'engnine_name',width:70,align:'center'"align="center">项目名称</th>
+				<th data-options="field:'tank_no',width:120,align:'center'"align="center">存储罐编号</th>
+				<th data-options="field:'gw',width:80,align:'center'"align="center">毛重</th>
+				<th data-options="field:'tare',width:80,align:'center'"align="center">车重</th>
+				<th data-options="field:'nw',width:80,align:'center'"align="center">净重</th>
+				<th data-options="field:'driver',width:80,align:'center'"align="center">司机名称</th>
+				<th data-options="field:'test',width:80,align:'center'"align="center">检验员</th>
+				<th data-options="field:'recorder',width:80,align:'center'"align="center">记录员</th>
+			</tr>
+		</thead>
+	</table>
+	<div id="tb" style="padding:2px 5px;">
+		起止日期: <input class="easyui-datebox" style="width:110px">
+		终止日期: <input class="easyui-datebox" style="width:110px">
+		工地名称: 
+		<select class="easyui-combobox" panelHeight="auto" style="width:100px">
+			<option value="java">Java</option>
+			<option value="c">C</option>
+			<option value="basic">Basic</option>
+			<option value="perl">Perl</option>
+			<option value="python">Python</option>
+		</select>
+		<button type="button" class="easyui-linkbutton" iconCls="icon-search">查询</button>
+	</div>
+	<div id="ft" style="padding:2px 5px;"></div>
+</body>
+</html>

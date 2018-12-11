@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+	<title>Basic DataGrid - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="css/easyui.css">
+	<link rel="stylesheet" type="text/css" href="css/icon.css">
+	<link rel="stylesheet" type="text/css" href="css/demo.css">
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easyui.min.js"></script>
+</head>
+<body>
+		<h2>Basic DataGrid</h2>
+		<p>The DataGrid is created from markup, no JavaScript code needed.</p>
+		<div style="margin:20px 0;"></div>
+		<table class="easyui-datagrid" title="报表" style="width:700px;height:250px"
+				data-options="singleSelect:true,collapsible:true,url:'http://127.0.0.1:8080/BLPM/indexServlet',method:'get',
+				
+				pagination:true,
+				pageSize:10"">
+			<thead>
+				<tr>
+					<th data-options="field:'userId',width:80">编号</th>
+					<th data-options="field:'userName',width:100">账户</th>
+					<th data-options="field:'userPass',width:250,align:'center'">密码</th>
+				</tr>
+			</thead>
+		</table>
+</body>
+</html>

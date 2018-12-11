@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/easyui.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon.css">
+		<link rel="stylesheet" type="text/css" href="../css/demo.css">
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var myDate = new Date();
+				var nowYear = myDate.getFullYear();
+				var nowMonth = myDate.getMonth();
+				var nowDate = myDate.getDate(); //得到本月记号
+				var nowDay = myDate.getDay(); //得到星期几					
+				var nowHour = myDate.getHours();
+				var nowMinute = myDate.getMinutes();
+				var nowSecond = myDate.getSeconds();
+				var yearId = nowYear + "";
+				$("#serialNumber").textbox("setValue", ((yearId.substr(2, 2)) + "-" + (nowMonth + 1) + "-"));
+				$(function() {
+					$('#supplier').textbox('textbox').bind('keyup', function() {
+						this.value = this.value.replace(/[^\u4e00-\u9fa5]/g, '');
+					})
+				})
+				$(function() {
+					$('#chauffeur').textbox('textbox').bind('keyup', function() {
+						this.value = this.value.replace(/[^\u4e00-\u9fa5]/g, '');
+					})
+				})
+				$("input").blur(function() {
+					var time = $("#inTime").val();
+					var sn = $("#serialNumber").val();
+					var sl = $("#supplier").val();
+					var materials = $("input[name='materials']:checked ").val();
+					switch (materials) {
+						case ("sand"):
+							$("#infoMaterials").text("砂 子");
+							break;
+						case ("cement"):
+							$("#infoMaterials").text("水 泥");
+							break;
+						case ("cinder"):
+							$("#infoMaterials").text("粉煤灰");
+							break;
+						case ("additiveA"):
+							$("#infoMaterials").text("添加剂A");
+							break;
+						case ("additiveB"):
+							$("#infoMaterials").text("添加剂B");
+							break;
+					}
+					var carNumber = $("#carNumber").val();
+					var gross = $("#gross").val();
+					var tare = $("#tare").val();
+					var suttle = (gross - tare).toFixed(3);
+					var arrange = $("#arrange").val();
+					var chauffeur = $("#chauffeur").val();
+					if (!isNaN(suttle)) {
+						$("#suttle").textbox("setValue", parseFloat(suttle));
+						$("#infoSuttle").text(suttle + "(t)");
+					}
+					$("#infoCarNumber").text(carNumber);
+					$("#infoTime").text(time);
+					$("#infoSerialNumber").text(sn);
+					$("#infoSupplier").text(sl);
+					$("#infoGross").text(gross + "(t)");
+					$("#infoTare").text(tare + "(t)");
+					$("#infoChauffeur").text(chauffeur);
+					switch (arrange) {
+						case ("morning"):
+							$("#infoArrange").text("早班");
+							break;
+						case ("noon"):
+							$("#infoArrange").text("中班");
+							break;
+						case ("night"):
+							$("#infoArrange").text("晚班");
+							break;
+					}
+				});
+			});
+		</script>
+		<style type="text/css">
+			#tab {
+				color: blue;
+				font-size: 17px;
+				text-align: center;
+				border: solid 1px;
+				border-color: blue;
+				border-collapse: collapse;
+				margin: auto;
+				width: 95%;
+			}
+
+			#tab tr {
+				height: 44px;
+			}
+
+			#tab td {
+				border: solid 1px;
+				border-color: blue;
+			}
+			.result {
+				font-size: 23px;
+				color: black;
+			}
+			.title_1 {
+				width: 100%;
+				height: 40px;
+				background-color: #E0ECFF;
+				background: -webkit-linear-gradient(top, #EFF5FF 0, #E0ECFF 100%);
+				background: -moz-linear-gradient(top, #EFF5FF 0, #E0ECFF 100%);
+				background: -o-linear-gradient(top, #EFF5FF 0, #E0ECFF 100%);
+				background: linear-gradient(to bottom, #EFF5FF 0, #E0ECFF 100%);
+				background-repeat: repeat-x;
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFF5FF, endColorstr=#E0ECFF, GradientType=0);
+			}
+		</style>
+	</head>
+	<body>
+		<form>
+			<table border="1" bordercolor="#95b8e7" width="100%" style="border-collapse:collapse; ">
+				<tr>
+					<div class="title_1">
+						<font size="5">财务部——</font>
+						<font size="3" color="red">原材料入厂记录</font>
+					</div>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">入 库 时 间 ： </font>
+					</td>
+					<td>
+						<input class="easyui-datetimebox" id="inTime" name="inTime" data-options="showSeconds:false" style="width:150px">
+						<font size="4">XX月XX日XXXX年*XX时XX分</font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">票 据 编 号 ：</font>
+					</td>
+					<td>
+						<input class="easyui-textbox" id="serialNumber" name="serialNumber" style="width:20%;">
+						<font size="4">XX-XX-XX</font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right" style="width:20%;">
+						<font size="4">发 货 单 位 ：</font>
+					</td>
+					<td>
+						<input class="easyui-textbox" id="supplier" name="supplier" style="width:20%;">
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">货 物 名 称 ：</font>
+					</td>
+					<td>
+						<div style="float: left;width: 160px;"><img src="../css/icons/shazi.png" style="width: 30px;height: 30px;">
+							<font size="4">砂 子 : </font><input class="easyui-radiobutton" name="materials" value="sand">
+						</div>
+						<div style="float: left;width: 160px;"><img src="../css/icons/shuini.png" style="width: 30px;height: 30px;">
+							<font size="4">水 泥 : </font><input class="easyui-radiobutton" name="materials" value="cement">
+						</div>
+						<div style="float: left;width: 160px;"><img src="../css/icons/meihui.jpg" style="width: 30px;height: 30px;">
+							<font size="4">粉 煤 灰 : </font><input class="easyui-radiobutton" name="materials" value="cinder">
+						</div>
+						<div style="float: left;width: 165px;"><img src="../css/icons/tianjiajiA.jpg" style="width: 30px;height: 30px;">
+							<font size="4">添 加 剂 A : </font><input class="easyui-radiobutton" name="materials" value="additiveA">
+						</div>
+						<div style="float: left;width: 165px;"><img src="../css/icons/tianjiajiB.jpg" style="width: 30px;height: 30px;">
+							<font size="4">添 加 剂 B : </font><input class="easyui-radiobutton" name="materials" value="additiveB">
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">车&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号 ：</font>
+					</td>
+					<td>
+						<div style="float:left;width: 215px;">
+							<input id="carNumber" class="easyui-textbox" name="carNumber" style="width:210px;">
+						</div>
+						<div style="float:left;width: 165px;"><img src="../css/icons/carnumber.jpg" style="width: 120px;height: 28px;"></<div>
+					</td>
+				</tr>
+				<tr>
+					<td align="right" style="width:20%;">
+						<font size="4">毛&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重 ：</font>
+					</td>
+					<td style="width:80%;">
+						<input id="gross" class="easyui-numberbox" name="gross" style="width:20%;" data-options="max:100,precision:3">
+						<font size="4">单位：吨 (t)</font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">皮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重 ：</font>
+					</td>
+					<td>
+						<input id="tare" class="easyui-numberbox" name="tare" style="width:20%;" data-options="max:100,precision:3">
+						<font size="4">单位：吨 (t)</font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">净&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重 ：</font>
+					</td>
+					<td>
+						<input id="suttle" class="easyui-numberbox" name="suttle" style="width:20%;" data-options="max:100,precision:3">
+						<font size="4">单位：吨 (t)</font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">司&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机 ：</font>
+					</td>
+					<td>
+						<input id="chauffeur" class="easyui-textbox" name="chauffeur" style="width:20%;">
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">操&nbsp;&nbsp;作&nbsp;&nbsp;员 ：</font>
+					</td>
+					<td>
+						<select class="easyui-combobox" id="arrange" name="arrange" style="width:20%;" panelHeight="auto">
+							<option value="morning">早 班</option>
+							<option value="noon">中 班</option>
+							<option value="night">晚 班</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+			<div style="background-color: #FF8C69; border: solid 2px;border-color: blue; border-style: dashed; position: relative; top: 10px;height: 340px;">
+				<div style="text-align:center;">
+					<font size="5" color="blue">陕 西 博 立 建 材 有 限 公 司</font>
+				</div><br />
+				<font size="3" color="blue"><span id="infoTime" style="position: relative;left: 10%;" class="result"></span></font>
+				<span style="position: relative;left: 60%;">
+					<font size="3" color="blue">编号:</font>
+					<span class="result" id="infoSerialNumber"></span>
+				</span>
+				<table id="tab">
+					<tr>
+						<td width="200px;">发货单位</td>
+						<td colspan="5" class="result" id="infoSupplier">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+						<td rowspan="2">白联磅房存根<br />红联财务记账</td>
+					</tr>
+					<tr>
+						<td>货物名称</td>
+						<td id="infoMaterials" colspan="5" class="result">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td>规格型号</td>
+						<td class="result">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+						<td>车号</td>
+						<td id="infoCarNumber" colspan="3" class="result">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+						<td rowspan="3">黄联运费结算</td>
+					</tr>
+					<tr>
+						<td>毛重</td>
+						<td id="infoGross" class="result">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+						<td>皮重</td>
+						<td id="infoTare" class="result">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+						<td>净重</td>
+						<td id="infoSuttle" class="result">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td>单价</td>
+						<td class="result">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+						<td>金额</td>
+						<td id="testTime" colspan="3" class="result">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						</td>
+					</tr>
+				</table>
+				<span style="position: absolute; left: 30px; top: 305px;">
+					<font size="3" color="blue">操作员：</font>
+					<span id="infoArrange" class="result">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				</span>
+				<span style="position: absolute;right: 30px;top: 305px;">
+					<font size="3" color="blue">司机：</font>
+					<span id="infoChauffeur" class="result">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+				</span>
+			</div>
+		</form>
+	</body>
+</html>

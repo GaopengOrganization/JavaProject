@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../css/easyui.css">
+		<link rel="stylesheet" type="text/css" href="../css/icon.css">
+		<link rel="stylesheet" type="text/css" href="../css/demo.css">
+		<script type="text/javascript" src="../js/jquery.min.js"></script>
+		<script type="text/javascript" src="../js/jquery.easyui.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("input").blur(function() {
+					var outTime = $("#outTime").val();
+					var carCount = $("#carCount").val();
+					var model = $("input[name='model']:checked ").val();					
+					var suttle = $("#suttle").val();
+					var arrange = $("#arrange").val();					
+					$("#infoOutTime").text(outTime);
+					$("#infoCarCount").text(carCount);
+					$("#infoSuttle").text(suttle + "(t)");					
+					switch (model) {
+					case ("DMM5"):						
+						$("#infoModel").text("砌筑砂浆 DMM 5");
+						break;
+					case ("DMM7.5"):
+						$("#infoModel").text("砌筑砂浆 DMM 7.5");
+						break;
+					case ("DMM10"):
+						$("#infoModel").text("砌筑砂浆 DMM 10");
+						break;
+					case ("DPM5"):
+						$("#infoModel").text("抹灰砂浆 DPM 5");
+						break;
+					case ("DPM10"):
+						$("#infoModel").text("抹灰砂浆 DPM 10");
+						break;
+					case ("DPM15"):
+						$("#infoModel").text("抹灰砂浆 DPM 15");
+						break;
+					case ("DSM15"):
+						$("#infoModel").text("地面砂浆 DSM 15");
+						break;
+					case ("DSM20"):
+						$("#infoModel").text("地面砂浆 DSM 20");
+						break;
+					case ("DSM25"):
+						$("#infoModel").text("地面砂浆 DSM 25");
+						break;						
+					}					
+					switch (arrange) {
+						case ("早"):
+							$("#infoArrange").text("早班");
+							break;
+						case ("中"):
+							$("#infoArrange").text("中班");
+							break;
+						case ("晚"):
+							$("#infoArrange").text("晚班");
+							break;
+					}					
+				});
+			});
+		</script>
+		<style type="text/css">
+			#tab {
+				color: blue;
+				font-size: 17px;
+				text-align: center;
+				border: solid 1px;
+				border-color: blue;
+				border-collapse: collapse;
+				margin: auto;
+				width: 95%;
+			}
+
+			#tab tr {
+				height: 44px;
+			}
+
+			#tab td {
+				border: solid 1px;
+				border-color: blue;
+			}
+			.result {
+				font-size: 23px;
+				color: black;
+			}
+			.title_1 {
+				width: 100%;
+				height: 40px;
+				background-color: #E0ECFF;
+				background: -webkit-linear-gradient(top, #EFF5FF 0, #E0ECFF 100%);
+				background: -moz-linear-gradient(top, #EFF5FF 0, #E0ECFF 100%);
+				background: -o-linear-gradient(top, #EFF5FF 0, #E0ECFF 100%);
+				background: linear-gradient(to bottom, #EFF5FF 0, #E0ECFF 100%);
+				background-repeat: repeat-x;
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#EFF5FF, endColorstr=#E0ECFF, GradientType=0);
+			}
+		</style>
+	</head>
+	<body>
+		<form>
+			<table border="1" bordercolor="#95b8e7" width="100%" style="border-collapse:collapse; ">
+				<tr>
+					<div class="title_1">
+						<font size="5">生产部——</font>
+						<font size="3" color="red">生产量明细统计</font>
+					</div>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">装 货  时 间 ： </font>
+					</td>
+					<td>
+						<input class="easyui-datetimebox" id="outTime" name="outTime" data-options="showSeconds:false" style="width:150px">
+						<font size="4">XX月XX日XXXX年*XX时XX分</font>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<font size="4">本月出货车次 ：</font>
+					</td>
+					<td>
+						<input class="easyui-textbox" id="carCount" name="carCount" style="width:20%;">
+						<font size="4">XX-XX-XX</font>
+					</td>
+				</tr>
+
+				<tr>
+					<td align="right">
+						<font size="4">砂 浆 种 类 ：</font>
+					</td>
+					<td>
+						<div>
+							<div style="float: left;width: 240px;">
+								<span><font size="4" color="red">砌筑类——</font></span>
+								<font size="4" color="red">DMM&nbsp;&nbsp;5 : </font><input class="easyui-radiobutton" name="model" value="DMM5">
+							</div>
+							<div style="float: left;width: 160px;">
+								<font size="4" color="red">DMM 7.5 : </font><input class="easyui-radiobutton" name="model" value="DMM7.5">
+							</div>
+							<div style="float: left;width: 220px;">
+								<font size="4" color="red">DMM 10 : </font><input class="easyui-radiobutton" name="model" value="DMM10">
+							</div>
+						</div><br/><br/><br/>						
+						<div>
+							<div style="float: left;width: 240px;">
+								<span><font size="4" color="#00dd00">抹灰类——</font></span>
+								<font size="4" color="#00dd00">DPM &nbsp;&nbsp;5  : </font><input class="easyui-radiobutton" name="model" value="DPM5">
+							</div>
+							<div style="float: left;width: 160px;">
+								<font size="4" color="#00dd00">DPM 10 : </font><input class="easyui-radiobutton" name="model" value="DPM10">
+							</div>
+							<div style="float: left;width: 220px;">
+								<font size="4" color="#00dd00">DPM 15 : </font><input class="easyui-radiobutton" name="model" value="DPM15">
+							</div>
+						</div><br/><br/><br/>						
+						<div>
+							<div style="float: left;width: 240px;">
+								<span><font size="4" color="blue">地面类——</font></span>
+								<font size="4" color="blue">DSM 15 : </font><input class="easyui-radiobutton" name="model" value="DSM15">
+							</div>
+							<div style="float: left;width: 160px;">
+								<font size="4" color="blue">DSM 20 : </font><input class="easyui-radiobutton" name="model" value="DSM20">
+							</div>
+							<div style="float: left;width: 220px;">
+								<font size="4" color="blue">DSM 25 : </font><input class="easyui-radiobutton" name="model" value="DSM25">
+							</div>
+						</div>						
+					</td>
+				</tr>
+
+				<tr>
+					<td align="right">
+						<font size="4">净&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;重 ：</font>
+					</td>
+					<td>
+						<input id="suttle" class="easyui-numberbox" name="suttle" style="width:20%;" data-options="max:100,precision:3">
+						<font size="4">单位：吨 (t)</font>
+					</td>
+				</tr>
+
+				<tr>
+					<td align="right">
+						<font size="4">操&nbsp;&nbsp;作&nbsp;&nbsp;员 ：</font>
+					</td>
+					<td>
+						<select class="easyui-combobox" id="arrange" name="arrange" style="width:20%;" panelHeight="auto">
+							<option value="早">早 班</option>
+							<option value="中">中 班</option>
+							<option value="晚">晚 班</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+		</form>
+			<div style="background-color: #ffdddd; border: solid 2px;border-color: blue; border-style: dashed; position: relative; top: 10px;height: 170px;">
+				<div style="text-align:center;">
+					<font size="5" color="blue">生产部——生产明细单</font>
+				</div><br />
+				<table id="tab">
+				<tr>
+					<td width="140px;">装货时间</td>
+					<td width="140px;">出货车次</td>
+					<td width="140px;">成品型号</td>
+					<td width="140px;">成品净重</td>
+					<td width="140px;">操作员</td>					
+				</tr>
+				<tr>
+					<td class="result" id="infoOutTime"></td>
+					<td class="result" id="infoCarCount"></td>
+					<td class="result" id="infoModel"></td>
+					<td class="result" id="infoSuttle"></td>
+					<td class="result" id="infoArrange"></td>
+				</tr>
+			</div>
+	</body>
+</html>

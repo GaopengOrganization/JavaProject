@@ -1,0 +1,4 @@
+driver=com.mysql.jdbc.Driver
+url=jdbc:mysql://192.168.1.2:3306/concrete?useSSL=false
+username=admin
+password=a111
