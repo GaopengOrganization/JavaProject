@@ -6,20 +6,13 @@ public class Dispatcher {
  private String stuffName;
  private String supplierName;
  private String warehousing_timee;
- private double nw;
+ private String nw;
  private String driver_name;
- private double produce_resume;
+ private String produce_resume;
  private String record_name;
- private double GW;
- private double tare;
+ private String GW;
+ private String tare;
  private String carNumber;
- 
-public String getCarNumber() {
-	return carNumber;
-}
-public void setCarNumber(String carNumber) {
-	this.carNumber = carNumber;
-}
 public int getId() {
 	return id;
 }
@@ -50,10 +43,10 @@ public String getWarehousing_timee() {
 public void setWarehousing_timee(String warehousing_timee) {
 	this.warehousing_timee = warehousing_timee;
 }
-public double getNw() {
+public String getNw() {
 	return nw;
 }
-public void setNw(double nw) {
+public void setNw(String nw) {
 	this.nw = nw;
 }
 public String getDriver_name() {
@@ -62,10 +55,10 @@ public String getDriver_name() {
 public void setDriver_name(String driver_name) {
 	this.driver_name = driver_name;
 }
-public double getProduce_resume() {
+public String getProduce_resume() {
 	return produce_resume;
 }
-public void setProduce_resume(double produce_resume) {
+public void setProduce_resume(String produce_resume) {
 	this.produce_resume = produce_resume;
 }
 public String getRecord_name() {
@@ -74,17 +67,23 @@ public String getRecord_name() {
 public void setRecord_name(String record_name) {
 	this.record_name = record_name;
 }
-public double getGW() {
+public String getGW() {
 	return GW;
 }
-public void setGW(double gW) {
+public void setGW(String gW) {
 	GW = gW;
 }
-public double getTare() {
+public String getTare() {
 	return tare;
 }
-public void setTare(double tare) {
+public void setTare(String tare) {
 	this.tare = tare;
+}
+public String getCarNumber() {
+	return carNumber;
+}
+public void setCarNumber(String carNumber) {
+	this.carNumber = carNumber;
 }
  
 }
