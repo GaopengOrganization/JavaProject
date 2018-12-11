@@ -4,34 +4,4 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-	
-	<servlet>
-		<servlet-name>contract</servlet-name>
-		<servlet-class>com.hellojava.servlet.LSeekCont</servlet-class>
-	</servlet>
-	
-	<servlet>
-		<servlet-name>laddcont</servlet-name>
-		<servlet-class>com.hellojava.servlet.LAddCont</servlet-class>
-	</servlet>
-	
-	<servlet>
-		<servlet-name>ship</servlet-name>
-		<servlet-class>com.hellojava.servlet.LShipmentsServlet</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>ship</servlet-name>
-		<url-pattern>/ship</url-pattern>
-	</servlet-mapping>
-	
-	<servlet-mapping>
-		<servlet-name>contract</servlet-name>
-		<url-pattern>/cont</url-pattern>
-	</servlet-mapping>
-
-	<servlet-mapping>
-		<servlet-name>laddcont</servlet-name>
-		<url-pattern>/lad</url-pattern>
-	</servlet-mapping>
 </web-app>
